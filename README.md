@@ -12,4 +12,5 @@ Essa aplicação foi desenvolvida utilizando Python em conjunto a API do Google 
 
 4- Utiliza a API do Google Sheets para obter os valores de uma planilha específica e realizar operações de cálculo de situação e nota para aprovação final para cada aluno.
 Atualiza a planilha com as novas informações, incluindo a situação e a nota para aprovação final calculadas.
- 
+
+OBS: Para executar o codigo basta executar a funçao main da classe challenge
