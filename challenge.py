@@ -60,6 +60,15 @@ def main():
     )
     values = result.get("values", [])
 
+    situation_column = [
+
+
+    ]
+
+    naf_column =[
+
+    ]
+
     total_classes = 60
 
     for i, line in enumerate(values, start=3):
@@ -76,7 +85,16 @@ def main():
       else:
         naf = 0
 
-      print(naf)
+      situation_column.append([situation])
+
+      result = sheet.values().update(spreadsheetId=SAMPLE_SPREADSHEET_ID,
+                                     range="G4", valueInputOption="USER_ENTERED",
+                                     body={'values': situation_column}).execute()
+      naf_column.append([naf])
+
+      result = sheet.values().update(spreadsheetId=SAMPLE_SPREADSHEET_ID,
+                                     range="h4", valueInputOption="USER_ENTERED",
+                                     body={'values': naf_column}).execute()
 
 
 
