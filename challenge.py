@@ -25,9 +25,11 @@ def calculate_situation(average, fouls, total_classes):
   else:
     return "Aprovado"
 
+
 def calculate_naf(average):
     naf = 10 - average
     return round(naf)
+
 
 def main():
 
@@ -35,6 +37,7 @@ def main():
 
   if os.path.exists("token.json"):
     creds = Credentials.from_authorized_user_file("token.json", SCOPES)
+
   # If there are no (valid) credentials available, let the user log in.
   if not creds or not creds.valid:
     if creds and creds.expired and creds.refresh_token:
@@ -60,14 +63,9 @@ def main():
     )
     values = result.get("values", [])
 
-    situation_column = [
+    situation_column = []
 
-
-    ]
-
-    naf_column =[
-
-    ]
+    naf_column = []
 
     total_classes = 60
 
