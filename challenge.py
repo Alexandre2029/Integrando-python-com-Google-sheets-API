@@ -15,6 +15,17 @@ SAMPLE_SPREADSHEET_ID = "1BxeqyHIt4vG6hPt9t9h9Ha24QCvul8UQh6GK_4u3HrA"
 SAMPLE_RANGE_NAME = "engenharia_de_software!A4:H27"
 
 
+def calculate_situation(average, fouls, total_classes):
+  if fouls > 0.25 * total_classes:
+    return "Reprovado por faltas"
+  elif average < 5:
+    return "Reprovado por nota"
+  elif 5 <= average < 7:
+    return "Exame final"
+  else:
+    return "Aprovado"
+
+
 def main():
 
   creds = None
@@ -46,12 +57,17 @@ def main():
     )
     values = result.get("values", [])
 
-    for i, linha in enumerate(values, start=3):
-      p1 = int(linha[3])
-      p2 = int(linha[4])
-      p3 = int(linha[5])
-      media = ((p1 + p2 + p3) / 3) / 10
-      print(media)
+    total_classes = 60
+
+    for i, line in enumerate(values, start=3):
+      p1 = int(line[3])
+      p2 = int(line[4])
+      p3 = int(line[5])
+      fouls = int(line[2])
+      average = ((p1 + p2 + p3) / 3) / 10
+
+      situation = calculate_situation(average, fouls, total_classes)
+      print(situation)
 
 
 
