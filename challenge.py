@@ -25,6 +25,9 @@ def calculate_situation(average, fouls, total_classes):
   else:
     return "Aprovado"
 
+def calculate_naf(average):
+    naf = 10 - average
+    return round(naf)
 
 def main():
 
@@ -67,7 +70,15 @@ def main():
       average = ((p1 + p2 + p3) / 3) / 10
 
       situation = calculate_situation(average, fouls, total_classes)
-      print(situation)
+
+      if situation == "Exame final":
+        naf = calculate_naf(average)
+      else:
+        naf = 0
+
+      print(naf)
+
+
 
 
 
