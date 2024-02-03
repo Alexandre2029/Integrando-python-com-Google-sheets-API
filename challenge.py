@@ -12,7 +12,7 @@ SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
 
 # The ID and range of a sample spreadsheet.
 SAMPLE_SPREADSHEET_ID = "1BxeqyHIt4vG6hPt9t9h9Ha24QCvul8UQh6GK_4u3HrA"
-SAMPLE_RANGE_NAME = "Class Data!A4:H27"
+SAMPLE_RANGE_NAME = "engenharia_de_software!A4:H27"
 
 
 def main():
@@ -44,7 +44,15 @@ def main():
         .get(spreadsheetId=SAMPLE_SPREADSHEET_ID, range=SAMPLE_RANGE_NAME)
         .execute()
     )
-   # values = result.get("values", [])
+    values = result.get("values", [])
+
+    for i, linha in enumerate(values, start=3):
+      p1 = int(linha[3])
+      p2 = int(linha[4])
+      p3 = int(linha[5])
+      media = ((p1 + p2 + p3) / 3) / 10
+      print(media)
+
 
 
   except HttpError as err:
